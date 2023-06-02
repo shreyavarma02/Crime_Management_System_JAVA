@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Create New Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('Img_civilian_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <div align="center" class="center">
+        <h1 style="font-family:verdana;font-size:350%; ">Civilian login page</h1>
+        <h1 th:text="${username}"></h1>
+        <br />
+        <div class="col-sm-4">
+            <tr>
+                <div align="left">
+                    <h3 style="color:beige;background-color:rgb(79, 50, 50);text-align: center;"><a
+                            th:href="@{'/fir/' + ${username}}">File FIR</a></h3>
+                </div>
+            <tr>
+                <div align="left">
+                    <h3 style="color:beige;background-color:rgb(79, 50, 50);text-align: center;"><a
+                            th:href="@{'/updates/' + ${username}}">View updates</a></h3>
+                </div>
+
+            </tr>
+
+            </tr>
+        </div>
+</body>
+
+</html>

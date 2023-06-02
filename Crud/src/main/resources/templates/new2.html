@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var content = document.getElementById('added').textContent
+            if (content == "1") {
+                $("#added1").show();
+            }
+            else {
+                $("#added1").hide();
+            }
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var content = document.getElementById('assign').textContent
+            if (content == "1") {
+                $("#assign1").show();
+            }
+            else {
+                $("#assign1").hide();
+            }
+
+        });
+    </script>
+    <style>
+        .button1,
+        .button2,
+        .button3 {
+            border: none;
+            background-color: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body style="background-color:brown;">
+    <style>
+        body {
+            background-image: url('/Img_new2_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <h1 style="font-family:verdana;font-size:300%;color:beige;" align="center">Police Incharge</h1>
+    <!-- Card -->
+    <div class="bg-image card shadow-1-strong" style="font-family:tahoma;" ;>
+        <div class="card-body text-white">
+
+            <h5 class="card-title" style="color:black;">Enter Case-id for updates</h5>
+            <form method="post" th:object="${user}" th:action="@{/process_caseid}" action="#">
+                <input type="text" name="value1" id="value1" /><br>
+                <input class="button1" type="submit" value="Enter" />
+            </form>
+        </div>
+    </div>
+    <div class="bg-image card shadow-2-strong" style="font-family:tahoma;">
+        <div class="card-body text-white">
+            <h5 class="card-title" style="color:black;">Enter case-id to be closed</h5>
+            <form method="post" th:object="${user}" th:action="@{/process_closecase}" action="#">
+                <input type="text" name="value2" id="value2" /><br>
+                <input class="button2" type="submit" value="Close Case" />
+            </form>
+            <!--<div id="added">Successfully added!</div-->
+            <h5 id="added1">Successfully added!</h5>
+            <p id="added" th:text="${addedornot}" hidden />
+
+        </div>
+    </div>
+    <div class="bg-image card shadow-3-strong" style="font-family:tahoma;">
+        <div class="card-body text-white">
+            <h5 class="card-title" style="color:black;">Assign Police
+                Officer to case</h5>
+            <form method="post" th:object="${user}" th:action="@{/assigncase}" action="#">
+                <input type="text" name="value3" id="value3" style="color:black;" /><br>
+                <input class="button3" type="submit" value="Assign" style="color:black;" />
+            </form>
+            <h5 id="assign1" th:text="'Successfully assigned to Police officer with PID: '+${mpid}"
+                style="color:black;"></h5>
+            <p hidden id="assign" th:text="${assignornot}" />
+        </div>
+    </div>
+    <div class="bg-image card shadow-3-strong" style="font-family:tahoma;">
+        <div class="card-body text-white">
+
+            <form method="post" th:object="${user}" th:action="@{/createleader}" action="#">
+
+                <input class="button4" type="submit" value="Create Leaderboard" />
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <h3 align="center"><a th:href="newentrypo" style="font-family:verdana;font-size:100%;color:beige;">Add new PO</a>
+    </h3>
+    <table class="table table-bordered table-striped" style="color:beige;">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>PID</th>
+                <th>Specialization</th>
+                <th>Assigned cases</th>
+                <th>Closed cases</th>
+                <th>Security key</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i: ${po}">
+                <td th:text="${i.name}" />
+                <td th:text="${i.pid}" />
+                <td th:text="${i.specialization}" />
+                <td th:text="${i.assigned}" />
+                <td th:text="${i.closedcases}" />
+                <td th:text="${i.securitykey}" />
+                <td>
+                    <a th:href="@{'/edit1/' + ${i.pid}}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{'/delete1/' + ${i.pid}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+
+</html>
+</body>
+
+</html>

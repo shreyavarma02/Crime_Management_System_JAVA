@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var content = document.getElementById('added').textContent
+            if (content == "1") {
+                $("#added1").show();
+            }
+            else {
+                $("#added1").hide();
+            }
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var content = document.getElementById('update').textContent
+            if (content == "1") {
+                $("#update1").show();
+            }
+            else {
+                $("#update1").hide();
+            }
+
+        });
+    </script>
+    <style>
+        .button1,
+        .button2,
+        .button3 {
+            border: none;
+            background-color: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body style="background-color:brown;">
+    <style>
+        body {
+            background-image: url('Img_new1_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <div align="center">
+        <h1 style="font-family:verdana;font-size:400%;color:beige;align:center;">Police Officer</h1>
+        <!-- Card -->
+    </div>
+    <div class="bg-image card shadow-1-strong">
+        <div class="card-body text-white">
+            <div align="center">
+
+                <form method="post" th:object="${user}" th:action="@{/viewopencases}" action="#">
+                    <input type="hidden" name="value4" id="value4" th:value="${pid}" />
+                    <input class="button1" type="submit" value="View all open cases" align="center"
+                        style="font-family:verdana;font-size:150%;color:beige;background-color: black;" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="bg-image card shadow-2-strong">
+        <div class="card-body text-white" align="center">
+            <h5 class="card-title" style="font-family:verdana;font-size:150%;color:beige;">Enter case to be closed:</h5>
+            <form method="post" th:object="${upd}" th:action="@{/changetoclose}" action="#">
+                <label class="form-label" style="color:beige;">CaseId</label><br>
+                <input type="number" name="value5" id="value5" /><br>
+                <input class="button2" type="submit" value="Close Case"
+                    style="font-family:verdana;font-size:100%;color:beige;background-color: black;" />
+            </form>
+            <h5 id="added1">Successfully closed!</h5>
+            <p hidden id="added" th:text="${addedornot}" />
+
+        </div>
+    </div>
+    <div class="bg-image card shadow-3-strong" style="font-family:tahoma;">
+        <div class="card-body text-white">
+            <h5 class="card-title" style="font-family:verdana;font-size:150%;color:beige;" align="center">Update case:
+            </h5>
+            <div align="center">
+                <form method="post" th:object="${upd}" th:action="@{/updatecase}" action="#">
+                    <label class="form-label" style="color:beige;">CaseId</label><br>
+                    <input type="number" name="value6" id="value6" /> <br>
+                    <label class="form-label" style="color:beige;">Update</label><br>
+                    <input type="text" name="value7" id="value7" /> <br>
+                    <label class="form-label" style="color:beige;">Additional Update</label><br>
+                    <input type="text" name="value8" id="value8" /><br>
+                    <input type="hidden" name="value9" id="value9" th:value="${pid}" />
+                    <input class="button3" type="submit" value="Update"
+                        style="font-family:verdana;font-size:100%;color:beige;background-color: black;" />
+                </form>
+            </div>
+            <h5 id="update1">Successfully updated!</h5>
+            <p id="update" hidden th:text="${updatedornot}" />
+        </div>
+        <br><br>
+        <div class="bg-image card shadow-3-strong" style="font-family:tahoma;">
+            <div class="card-body text-white" align="center">
+
+                <form method="post" th:object="${user}" th:action="@{/createleader}" action="#">
+
+                    <input class="button4" type="submit" value="View Leaderboard" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

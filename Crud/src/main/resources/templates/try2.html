@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--<meta charset="utf-8" />-->
+    <title>Create New Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('Img_try2_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <table class="table table-bordered table-striped">
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Caseid</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Pid</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i: ${open}">
+                <td th:text="${i.caseid}" />
+                <td th:text="${i.type}" />
+                <td th:text="${i.description}" />
+                <td th:text="${i.pid}" />
+                <td th:text="${i.location}" />
+            </tr>
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>

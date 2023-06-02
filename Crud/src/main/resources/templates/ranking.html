@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Case updates</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('Img_ranking_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <div align="center">
+        <h1 style="font-family:verdana;font-size:300%;color:beige">Leaderboard</h1>
+        <br />
+
+        <div class="panel-body" align="center">
+            <table class="table"  style="color:beige">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Police ID</th>
+                        <th>Name</th>
+
+                    </tr>
+                </thead>
+                <div style="color:beige">
+                    <tbody>
+                        <tr th:each="rank : ${ranks}">
+                            <td th:text="${rank.pid}" style="color:beige">Police ID</td>
+                            <td th:text="${rank.name}" style="color:beige">Name</td>
+
+                    </tbody>
+                </div>
+            </table>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

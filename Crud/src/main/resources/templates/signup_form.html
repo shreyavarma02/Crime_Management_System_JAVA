@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Sign Up - CodeJava</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('#role').on('change', function () {
+				var demovalue = $(this).val();
+				//$("div.myDiv").hide();
+				if(demovalue=="PoliceIncharge")
+				{
+					$("#"+"PoliceOfficerone").show();
+				}
+				else
+				{
+					$("#" + demovalue + "one").show();
+				}
+				
+			});
+		});
+	</script>
+	<style>
+		.myDiv {
+			display: none;
+
+		}
+	</style>
+</head>
+<div align="center">
+	<style>
+		body {
+			background-image: url('Img_login_bg.png');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%;
+		}
+	</style>
+	<h1 style="font-family:verdana;font-size:300%;color:beige;">Create New Entry</h1>
+	<br />
+
+	<div class="col-sm-4">
+		<form action="#" th:action="@{/process_register}" th:object="${user}" method="post" modelAttribute="user">
+
+
+			<div alight="left">
+				<tr>
+					<label class="form-label" style="color:beige;">Username</label><br>
+					<td>
+						<input type="text" th:field="*{username}" class="form-control" name="username" />
+					</td>
+				</tr>
+			</div>
+			<br>
+
+			<div alight="left">
+				<tr>
+					<label class="form-label" style="color:beige;">Password</label><br>
+					<td><input type="password" th:field="*{password}" class="form-control" name="password" /></td>
+				</tr>
+			</div><br>
+			<div alight="left">
+				<tr>
+					<label class="form-label" style="color:beige;">Role</label><br>
+					<td>
+						<select id="role" name="role" th:field="*{role}" class="form-control">
+							<option value="Civilian">Civilian</option>
+							<option value="PoliceOfficer">Police Officer</option>
+							<option value="PoliceIncharge">Police Incharge</option>
+							<!--<option value="HeadOfficer">Head officer</option>-->
+						</select>
+						<div id="Civilianone" class="myDiv">
+						</div>
+						<!--<div id="HeadOfficerone" class="myDiv">
+			</div>-->
+						<div id="PoliceOfficerone" class="myDiv">
+							<label class="form-label" style="color:beige;">Police ID</label>
+							<input type="number" th:field="*{pid}" class="form-control" name="pid" />
+							<label class="form-label" style="color:beige;">Security key</label>
+							<input type="text" th:field="*{securitykey}" class="form-control" name="securitykey" />
+						</div>
+						<!--<div id="PoliceInchargeone" class="myDiv">
+				<label class="form-label" >Police ID</label>
+				<td><input type="number" th:field="*{pid}" class="form-control" name="pid" /></td>
+				
+				<label class="form-label" >Security key</label>
+				<td><input type="text" th:field="*{securitykey}" class="form-control" name="securitykey" />
+			</div>-->
+					</td>
+				</tr>
+			</div>
+			<br>
+			<tr>
+				<td colspan="2"><button type="submit" class="btn btn-info"
+						style="color:beige;background-color:black;font-size:100%;">Save</button> </td>
+			</tr>
+			</table>
+		</form>
+	</div>
+	<!--
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>User Registration - Sign Up</h1>
+		</div>
+		<form th:action="@{/process_register}" th:object="${user}" 
+			method="post" style="max-width: 600px; margin: 0 auto;">
+		<div class="m-3">
+			
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Username: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{username}" class="form-control" 
+							required minlength="2" maxlength="100"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Password: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{password}" class="form-control" 
+							required minlength="2" maxlength="100" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Role: </label>  
+				<div class="col-8">
+					<input type="text" th:field="*{role}" class="form-control" 
+							required minlength="2" maxlength="60" />
+				</div>
+			</div>
+			
+			<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button> 
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>-->

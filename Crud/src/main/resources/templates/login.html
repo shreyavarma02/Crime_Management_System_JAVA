@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - CodeJava</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('Img_login_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <div align="center">
+        <h1 style="font-family:verdana;font-size:300%;color:beige;">Login to the portal</h1>
+        <br />
+
+        <div class="col-sm-4">
+            <form action="#" th:action="@{/process_login}" th:object="${user}" method="post" modelAttribute="user">
+
+
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Username</label><br>
+                        <td>
+                            <input type="text" th:field="*{username}" class="form-control" name="username" />
+                        </td>
+                    </tr>
+                </div>
+
+                <br>
+
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Password</label><br>
+                        <td><input type="password" th:field="*{password}" class="form-control" name="password" /></td>
+                        <input type="hidden" th:field="*{role}" class="form-control" name="role" />
+                        <input type="hidden" th:field="*{pid}" class="form-control" name="pid" />
+                        <input type="hidden" th:field="*{securitykey}" class="form-control" name="securitykey" />
+                    </tr>
+
+                    <br><br>
+                    <tr>
+                        <td colspan="2"><button type="submit" class="btn btn-info"
+                                style="color:beige;background-color:black;font-size:100%;">Save</button> </td>
+                    </tr>
+                    </table>
+            </form>
+        </div>
+</body>
+
+</html>

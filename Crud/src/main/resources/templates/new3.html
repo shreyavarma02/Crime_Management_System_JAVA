@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--<meta charset="utf-8" />-->
+    <title>Create New Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<h1 style="font-family:verdana;font-size:300%;color:beige;" align="center">LOGGED in as HO</h1>
+
+<body>
+    <style>
+        body {
+            background-image: url('/Img_new3_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <h3 align="center" style="font-family:verdana;font-size:100%;color:beige;"><a th:href="newentrypi">Add new PI</a>
+    </h3>
+    <table class="table table-bordered table-striped" style="color:beige;">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>PID</th>
+                <th>Branch</th>
+                <th>Assigned PO</th>
+                <th>Security key</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i: ${pi}">
+                <td th:text="${i.name}" />
+                <td th:text="${i.pid}" />
+                <td th:text="${i.branch}" />
+                <td th:text="${i.assigned}" />
+                <td th:text="${i.securitykey}" />
+                <td>
+                    <a th:href="@{'/edit/' + ${i.pid}}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{'/delete/' + ${i.pid}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</br>
+</br>
+        <form method="post" th:object="${pi}" th:action="@{/getinference}" action="#" align="center">
+
+            <input class="button2" type="submit" value="Get inference" align="left" />
+        </form>
+    
+</body>
+
+</html>

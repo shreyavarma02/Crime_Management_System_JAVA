@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--<meta charset="utf-8" />-->
+    <title>Create New Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('/Img_editpo_bg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+    <div align="center">
+        <h1 style="font-family:verdana;font-size:300%;color:beige;">Create new entry</h1>
+        <br />
+
+        <div class="col-sm-4">
+            <form action="#" th:action="@{/savepo}" th:object="${po}" method="post">
+                <div alight="left">
+
+                    <tr>
+                        <label class="form-label" style="color:beige;">PID</label>
+                        <td><input type="text" th:field="*{pid}" class="form-control" placeholder="PID" /></td>
+                    </tr>
+                </div>
+
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Name</label>
+                        <td>
+                            <!--<input type="hidden" th:field="*{id}" />-->
+                            <input type="text" th:field="*{name}" class="form-control" placeholder="name" />
+                        </td>
+                    </tr>
+                </div>
+
+                <!--<div alight="left">
+          
+            <tr>
+                 <label class="form-label" >SRN</label>
+                <td><input type="text" th:field="*{srn}" class="form-control" placeholder="SRN" /></td>
+            </tr>
+            </div> -->
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Specialization</label>
+                        <td><input type="text" th:field="*{specialization}" class="form-control"
+                                placeholder="specialization" /></td>
+                    </tr>
+                </div>
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Assigned</label>
+                        <td><input type="text" th:field="*{assigned}" class="form-control" placeholder="assigned" />
+                        </td>
+                    </tr>
+                </div>
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Closed cases</label>
+                        <td><input type="text" th:field="*{closedcases}" class="form-control"
+                                placeholder="closedcases" /></td>
+                    </tr>
+                </div>
+                <div alight="left">
+                    <tr>
+                        <label class="form-label" style="color:beige;">Security key</label>
+                        <td><input type="text" th:field="*{securitykey}" class="form-control"
+                                placeholder="securitykey" /></td>
+                    </tr>
+                </div>
+                <br>
+                <tr>
+                    <td colspan="2"><button type="submit" class="btn btn-info"
+                            style="color:beige;background-color:black">Save</button> </td>
+                </tr>
+                </table>
+            </form>
+        </div>
+</body>
+
+</html>
